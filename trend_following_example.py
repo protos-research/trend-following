@@ -1,3 +1,10 @@
+"""
+#
+# Simple, Long-Short, Trend Following Strategy with 30/60/90 day lookback periods.
+# +1/3 weight for bullish trend, -1/3 weight for bearish trend within the respective lookback period.
+#
+"""
+
 import protos_edge as pe
 
 """
