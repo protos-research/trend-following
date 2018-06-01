@@ -1,4 +1,4 @@
-import base_classes as bc
+import protos_edge as pe
 
 """
 #
@@ -6,6 +6,7 @@ import base_classes as bc
 #
 """
 # Data
+tickers=['bitcoin','bitcoin-cash','ethereum','litecoin','ripple']
 start = '2016-12-31'
 end = '2018-05-25'
 
@@ -25,21 +26,20 @@ short_only=False
 
 if __name__ == '__main__':
     
-    data = bc.Trend_Data(start,end,frequency=1, tickers=[])
+    data = pe.Data_Selected(start,end,frequency=1,tickers=tickers)
     prices = data.load_data()
     
     prices = data.clean_data(prices)
         
-    portfolio = bc.Daily_Portfolio(init_balance)
+    portfolio = pe.Daily_Portfolio(init_balance)
     
-    backtest = bc.Daily_Backtest(rebalance_period, spread, fees)
+    backtest = pe.Daily_Backtest(rebalance_period, spread, fees)
     
-    strategy = bc.Trend_Following(max_lookback, weights,normalize_vol,
+    strategy = pe.Trend_Following(max_lookback, weights,normalize_vol,
                                   long_only, short_only)
     
     performance = backtest.run_backtest(prices,portfolio,strategy)
     
     
     backtest.collect_statistics(performance)
-
     
