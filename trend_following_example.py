@@ -13,9 +13,10 @@ import protos_edge as pe
 #
 """
 # Data
-tickers=['bitcoin','bitcoin-cash','ethereum','litecoin','ripple']
 start = '2016-12-31'
 end = '2018-05-25'
+tickers=['bitcoin','bitcoin-cash','ethereum','litecoin','ripple']
+
 
 # Backtest Parameters
 init_balance=100
@@ -35,9 +36,8 @@ if __name__ == '__main__':
     
     data = pe.Data_Selected(start,end,frequency=1,tickers=tickers)
     prices = data.load_data()
-    
     prices = data.clean_data(prices)
-        
+    
     portfolio = pe.Daily_Portfolio(init_balance)
     
     backtest = pe.Daily_Backtest(rebalance_period, spread, fees)
@@ -47,6 +47,5 @@ if __name__ == '__main__':
     
     performance = backtest.run_backtest(prices,portfolio,strategy)
     
-    
-    backtest.collect_statistics(performance)
+    statistics = backtest.collect_statistics(performance)
     
