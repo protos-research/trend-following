@@ -35,7 +35,7 @@ short_only=False
 if __name__ == '__main__':
     
     data = pe.Data_Selected(start,end,frequency=1,tickers=tickers)
-    prices = data.load_data()
+    prices = data.load_data(table="close")
     prices = data.clean_data(prices)
     
     portfolio = pe.Daily_Portfolio(init_balance)
