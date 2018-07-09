@@ -15,7 +15,7 @@ import protos_edge as pe
 # Data
 start = '2016-12-31'
 end = '2018-05-25'
-tickers=['bitcoin','bitcoin-cash','ethereum','litecoin','ripple']
+tickers=['bitcoin','bitcoin-cash','ethereum','litecoin','ripple','dash']
 
 
 # Backtest Parameters
@@ -28,7 +28,7 @@ fees=0
 max_lookback=90
 weights=[(1/3),(1/3),(1/3)]
 normalize_vol=True
-long_only=False
+long_only=True
 short_only=False
 
 
